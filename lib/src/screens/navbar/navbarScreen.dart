@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 
 class NavbarScreen extends StatelessWidget {
+
+  static const String name = 'navbar_screen';
+
   const NavbarScreen({super.key});
 
   @override

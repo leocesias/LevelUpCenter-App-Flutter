@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 
 class ProfileConfig extends StatefulWidget {
+
+  static const String name = 'profile_screen';
+
   const ProfileConfig({super.key});
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lookurclimb/src/screens/navbar/navbarScreen.dart';
 import 'package:lookurclimb/src/screens/profile/profileScreen.dart';
 
 void main() {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.lightBlue
       ),
-      home: const ProfileConfig(),
+      home: const NavbarScreen(),
     );
   }
 }
