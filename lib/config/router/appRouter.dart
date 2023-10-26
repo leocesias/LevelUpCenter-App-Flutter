@@ -17,6 +17,8 @@ class AppRouter extends StatelessWidget {
       const ActivitiesScreen(),
       const ProfileConfig(),
     ];
-    return myList[index];
+    return Scaffold(
+      body: myList[index],
+    );
   }
 }
