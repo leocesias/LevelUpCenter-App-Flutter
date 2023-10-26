@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lookurclimb/src/screens/navbar/navbarScreen.dart';
-import 'package:lookurclimb/src/screens/profile/profileScreen.dart';
 
 void main() {
   runApp(const MyApp());

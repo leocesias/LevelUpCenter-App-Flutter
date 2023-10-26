@@ -22,7 +22,7 @@ const appMenuItems = <MenuItems>[
   MenuItems(
     name: 'Activities',
     link: '/activities',
-    icon: Icons.dashboard_outlined//api.flutter.dev/flutter/material/Icons/dashboard_outlined-constant.html
+    icon: Icons.dashboard_outlined
   ),
   MenuItems(
     name: 'Coaches',

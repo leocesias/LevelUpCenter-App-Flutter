@@ -33,47 +33,7 @@ class _ProfileConfigState extends State<ProfileConfig> {
                   onPressed: () {},
                 ),
               ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.home, size: 45),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.people, size: 45),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.gamepad, size: 45),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.email, size: 45),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.person, size: 45),
-                    color: Colors.black,
-                    onPressed: () {},
-                  ),
-                ),
-              ],
-            ),
+            )
           ],
         ),
       ),
