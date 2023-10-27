@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:lookurclimb/src/screens/screens.dart';
+import 'package:GameMentor/src/screens/screens.dart';
 
 class AppRouter extends StatelessWidget {
   final int index;

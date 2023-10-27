@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 
+import 'package:GameMentor/config/menu/menuItems.dart';
+import 'package:GameMentor/config/router/appRouter.dart';
 import 'package:flutter/material.dart';
-import 'package:lookurclimb/config/menu/menuItems.dart';
-import 'package:lookurclimb/config/router/appRouter.dart';
 
 class NavbarScreen extends StatefulWidget {
   const NavbarScreen({Key? key}) : super(key: key);

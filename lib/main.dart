@@ -1,5 +1,5 @@
+import 'package:GameMentor/src/screens/navbar/navbarScreen.dart';
 import 'package:flutter/material.dart';
-import 'package:lookurclimb/src/screens/navbar/navbarScreen.dart';
 
 void main() {
   runApp(const MyApp());
