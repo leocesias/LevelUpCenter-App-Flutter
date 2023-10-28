@@ -2,15 +2,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class MenuItems extends StatefulWidget {
+class MenuItemsBottom extends StatefulWidget {
   final Function currentIndex;
-  const MenuItems({super.key, required this.currentIndex});
+  const MenuItemsBottom({super.key, required this.currentIndex});
 
   @override
-  State<MenuItems> createState() => _MenuItemsState();
+  State<MenuItemsBottom> createState() => _MenuItemsBottomState();
 }
 
-class _MenuItemsState extends State<MenuItems> {
+class _MenuItemsBottomState extends State<MenuItemsBottom> {
   int index = 0;
 
   @override
