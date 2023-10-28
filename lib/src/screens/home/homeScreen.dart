@@ -123,7 +123,7 @@ class MyHomeState extends State<MyHome> {
         Row(
           children: <Widget>[
             Expanded(
-              child: Image.asset('assets/image_1.png', fit: BoxFit.cover),
+              child: Image.asset('assets/images/image_1.png', fit: BoxFit.cover),
             ),
           ],
         ),
