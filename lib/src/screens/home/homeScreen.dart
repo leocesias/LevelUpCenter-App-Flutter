@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
       appBar: PreferredSize(
         // Elimina la Columna
         preferredSize: Size.fromHeight(kToolbarHeight),
-        child: MyAppBar(),
+        child: MyHome(),
       ),
       body: Column(
         children: [
@@ -23,38 +23,6 @@ class HomeScreen extends StatelessWidget {
           MyHome(),
         ],
       ), // Mueve el floatingActionButton
-    );
-  }
-}
-
-class MyAppBar extends StatelessWidget {
-  const MyAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: InkWell(
-        onTap: () {},
-        child: Text(
-          'GameMentor',
-          style: GoogleFonts.robotoMono(),
-        ),
-      ),
-      //title: const Text('GameMentor'), // Nombre de la empresa a la izquierda
-      actions: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.home), // Primer ícono a la derecha
-          onPressed: () {
-            // Lógica cuando se presiona el primer ícono
-          },
-        ),
-        IconButton(
-          icon: const Icon(Icons.notifications), // Segundo ícono a la derecha
-          onPressed: () {
-            // Lógica cuando se presiona el segundo ícono
-          },
-        ),
-      ],
     );
   }
 }
@@ -123,7 +91,8 @@ class MyHomeState extends State<MyHome> {
         Row(
           children: <Widget>[
             Expanded(
-              child: Image.asset('assets/images/image_1.png', fit: BoxFit.cover),
+              child:
+                  Image.asset('assets/images/image_1.png', fit: BoxFit.cover),
             ),
           ],
         ),

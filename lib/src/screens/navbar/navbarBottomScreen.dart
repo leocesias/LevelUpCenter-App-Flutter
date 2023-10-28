@@ -13,7 +13,7 @@ class NavbarBottomScreen extends StatefulWidget {
 
 class _NavbarBottomScreenState extends State<NavbarBottomScreen> {
   int index = 0;
-  late MenuItemsBottom bottomNavigation;  // Cambiado a late
+  MenuItemsBottom? bottomNavigation;
 
   @override
   void initState() {

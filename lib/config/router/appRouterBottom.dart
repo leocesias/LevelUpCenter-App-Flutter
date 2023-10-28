@@ -18,7 +18,10 @@ class AppRouterBottom extends StatelessWidget {
       const ProfileConfig(),
     ];
     return Scaffold(
-      body: myList[index],
+      body: IndexedStack(
+        index: index,
+        children: myList,
+      ),
     );
   }
 }

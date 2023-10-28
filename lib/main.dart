@@ -1,3 +1,4 @@
+import 'package:GameMentor/config/theme/appTheme.dart';
 import 'package:GameMentor/src/screens/navbar/navbarBottomScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primarySwatch: Colors.lightBlue
-      ),
+      theme: AppTheme.theme,
       home: const NavbarBottomScreen(),
     );
   }

@@ -13,6 +13,24 @@ class MenuItemsBottom extends StatefulWidget {
 class _MenuItemsBottomState extends State<MenuItemsBottom> {
   int index = 0;
 
+  // Método para manejar el cambio de pestaña
+  void _onTabChange(int i) {
+    print('Tab change requested to index $i');
+    if (mounted) {
+      // Verificar si el widget aún está en el árbol de widgets
+      setState(() {
+        index = i; // Actualizar el índice
+      });
+      widget.currentIndex(i); // Notificar al widget padre sobre el cambio
+    }
+  }
+
+  @override
+  void dispose() {
+    // Lugar para cancelar timers, animaciones, o desregistrar listeners si los tienes.
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -54,13 +72,10 @@ class _MenuItemsBottomState extends State<MenuItemsBottom> {
                 text: 'Profile',
               ),
             ],
-            selectedIndex: index,
-            onTabChange: (int i) {
-              setState(() {
-                index = i;
-                widget.currentIndex(i);
-              });
-            },
+            selectedIndex:
+                index,
+            onTabChange:
+                _onTabChange,
           ),
         ),
       ),
