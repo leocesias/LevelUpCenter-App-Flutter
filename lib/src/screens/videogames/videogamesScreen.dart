@@ -2,9 +2,6 @@
 import 'package:flutter/material.dart';
 
 class VideogamesScreen extends StatelessWidget {
-
-  static const String name = 'videogames_screen';
-
   const VideogamesScreen({super.key});
 
   @override

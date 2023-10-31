@@ -5,7 +5,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:status_bar_control/status_bar_control.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String name = 'home_screen';
   const HomeScreen({super.key});
 
   @override

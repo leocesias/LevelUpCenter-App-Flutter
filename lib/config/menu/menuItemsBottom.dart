@@ -15,7 +15,6 @@ class _MenuItemsBottomState extends State<MenuItemsBottom> {
 
   // Método para manejar el cambio de pestaña
   void _onTabChange(int i) {
-    print('Tab change requested to index $i');
     if (mounted) {
       // Verificar si el widget aún está en el árbol de widgets
       setState(() {

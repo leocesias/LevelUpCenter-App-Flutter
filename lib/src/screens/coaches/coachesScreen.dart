@@ -5,7 +5,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:status_bar_control/status_bar_control.dart';
 
 class CoachesScreen extends StatefulWidget {
-  static const String name = 'coaches_screen';
   const CoachesScreen({super.key});
 
   @override
