@@ -1,5 +1,5 @@
 import 'package:GameMentor/config/theme/appTheme.dart';
-import 'package:GameMentor/src/screens/navbar/navbarBottomScreen.dart';
+import 'package:GameMentor/src/screens/navbar/navbarsCombinedScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.theme,
-      home: const NavbarBottomScreen(),
+      home: const NavbarCombinedScreen(),
     );
   }
 }

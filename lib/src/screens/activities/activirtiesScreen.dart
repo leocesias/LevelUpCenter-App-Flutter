@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 class ActivitiesScreen extends StatelessWidget {
 
-  static const String name = 'activities_screen';
-
   const ActivitiesScreen({super.key});
 
   @override
