@@ -38,10 +38,8 @@ class GamesScreen extends StatelessWidget {
                     return GameItem(game: games[index]);
                   },
                 );
-              } else if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
               }
-              return Text('Error');
+              return const CircularProgressIndicator();
             }));
   }
 }
