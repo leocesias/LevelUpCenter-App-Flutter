@@ -1,5 +1,5 @@
-import 'package:GameMentor/coaching/domain/models/game/game.dart';
-import 'package:GameMentor/src/screens/videogames/game_details_screen.dart';
+import 'package:GameMentor/src/domain/models/game/game.dart';
+import 'package:GameMentor/src/screens/games/game_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class GameItem extends StatelessWidget {

@@ -1,16 +1,18 @@
-import 'package:GameMentor/coaching/domain/models/game/game.dart';
-import 'package:GameMentor/coaching/widgets/game/game_item.dart';
+import 'package:GameMentor/src/domain/models/game/game.dart';
 import 'package:GameMentor/src/services/game_service.dart';
+import 'package:GameMentor/src/widgets/game/game_item.dart';
 import 'package:flutter/material.dart';
 
 class GamesScreen extends StatelessWidget {
   static const String name = 'games_screen';
 
   Future<List<Game>> fetchGames() async {
+    print('fetching games');
     try {
       final response = await GameService.getMany();
       return response.data.map<Game>((e) => Game.fromJson(e)).toList();
     } catch (e) {
+      print(e);
       return [];
     }
   }

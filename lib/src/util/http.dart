@@ -1,8 +1,9 @@
+import 'package:GameMentor/src/util/environment.dart';
 import 'package:dio/dio.dart';
 
 final dio = Dio(
   BaseOptions(
-    baseUrl: "http://localhost:8080/api/v1",
+    baseUrl: Environment().apiUrl(),
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
