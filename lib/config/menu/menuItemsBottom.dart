@@ -60,7 +60,7 @@ class _MenuItemsBottomState extends State<MenuItemsBottom> {
               ),
               GButton(
                 icon: Icons.videogame_asset_outlined,
-                text: 'Videogame',
+                text: 'Games',
               ),
               GButton(
                 icon: Icons.dashboard_outlined,
@@ -71,10 +71,8 @@ class _MenuItemsBottomState extends State<MenuItemsBottom> {
                 text: 'Profile',
               ),
             ],
-            selectedIndex:
-                index,
-            onTabChange:
-                _onTabChange,
+            selectedIndex: index,
+            onTabChange: _onTabChange,
           ),
         ),
       ),
