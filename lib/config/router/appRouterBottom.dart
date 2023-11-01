@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
-import 'package:flutter/material.dart';
 import 'package:GameMentor/src/screens/screens.dart';
+import 'package:flutter/material.dart';
 
 class AppRouterBottom extends StatelessWidget {
   final int index;
@@ -13,7 +13,7 @@ class AppRouterBottom extends StatelessWidget {
     List<Widget> myList = [
       const HomeScreen(),
       const CoachesScreen(),
-      const VideogamesScreen(),
+      const GamesScreen(),
       const ActivitiesScreen(),
       const ProfileConfig(),
     ];
