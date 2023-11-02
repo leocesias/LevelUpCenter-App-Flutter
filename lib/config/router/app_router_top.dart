@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:GameMentor/src/screens/themeChanger/themechanger.dart';
+import 'package:game_mentor/screens/theme/theme_changer.dart';
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(initialLocation: '/', routes: [

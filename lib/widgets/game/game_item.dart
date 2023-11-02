@@ -1,6 +1,6 @@
-import 'package:GameMentor/src/domain/models/game/game.dart';
-import 'package:GameMentor/src/screens/games/game_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/domain/models/game/game.dart';
+import 'package:game_mentor/screens/games/game_details_screen.dart';
 
 class GameItem extends StatelessWidget {
   final Game game;
