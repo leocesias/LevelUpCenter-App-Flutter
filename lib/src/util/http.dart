@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 final dio = Dio(
   BaseOptions(
-    baseUrl: Environment().apiUrl(),
+    baseUrl: env.apiUrl,
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",

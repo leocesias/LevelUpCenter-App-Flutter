@@ -1,4 +1,4 @@
-export 'package:GameMentor/src/screens/activities/activirtiesScreen.dart';
+export 'package:GameMentor/src/screens/activities/activitiesScreen.dart';
 export 'package:GameMentor/src/screens/coaches/coachesScreen.dart';
 export 'package:GameMentor/src/screens/games/games_screen.dart';
 export 'package:GameMentor/src/screens/home/homeScreen.dart';

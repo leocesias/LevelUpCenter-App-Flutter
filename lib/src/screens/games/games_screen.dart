@@ -7,12 +7,10 @@ class GamesScreen extends StatelessWidget {
   static const String name = 'games_screen';
 
   Future<List<Game>> fetchGames() async {
-    print('fetching games');
     try {
       final response = await GameService.getMany();
       return response.data.map<Game>((e) => Game.fromJson(e)).toList();
     } catch (e) {
-      print(e);
       return [];
     }
   }
