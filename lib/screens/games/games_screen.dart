@@ -1,7 +1,7 @@
-import 'package:GameMentor/src/domain/models/game/game.dart';
-import 'package:GameMentor/src/services/game_service.dart';
-import 'package:GameMentor/src/widgets/game/game_item.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/domain/models/game/game.dart';
+import 'package:game_mentor/services/game_service.dart';
+import 'package:game_mentor/widgets/game/game_item.dart';
 
 class GamesScreen extends StatelessWidget {
   static const String name = 'games_screen';

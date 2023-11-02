@@ -1,5 +1,5 @@
-import 'package:GameMentor/src/domain/models/game/game.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/domain/models/game/game.dart';
 
 class GamesDetailsScreen extends StatelessWidget {
   static const String name = 'game_details_screen';
@@ -54,7 +54,7 @@ class GamesDetailsScreen extends StatelessWidget {
                         fontSize: 18,
                       )),
             ),
-            Text("Popular Courses"),
+            const Text("Popular Courses"),
           ],
         ));
   }

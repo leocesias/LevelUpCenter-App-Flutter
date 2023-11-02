@@ -1,5 +1,5 @@
-import 'package:GameMentor/src/util/environment.dart';
 import 'package:dio/dio.dart';
+import 'package:game_mentor/util/environment.dart';
 
 final dio = Dio(
   BaseOptions(
