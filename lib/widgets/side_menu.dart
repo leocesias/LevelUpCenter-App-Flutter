@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
-import 'package:GameMentor/config/menu/menuItemsTop.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/config/menu/menu_items_top.dart';
 import 'package:go_router/go_router.dart';
 
 class SideMenu extends StatefulWidget {

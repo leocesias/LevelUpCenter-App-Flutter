@@ -1,6 +1,6 @@
-import 'package:GameMentor/src/domain/models/game/game.dart';
-import 'package:GameMentor/src/util/http.dart';
 import 'package:dio/dio.dart';
+import 'package:game_mentor/domain/models/game/game.dart';
+import 'package:game_mentor/util/http.dart';
 
 class GameService {
   static getMany() async => await dio.get('/games');

@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, library_private_types_in_public_api
-import 'package:GameMentor/config/menu/menuItemsBottom.dart';
-import 'package:GameMentor/config/router/appRouterBottom.dart';
-import 'package:GameMentor/src/widgets/sideMenu.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/config/menu/menu_items_bottom.dart';
+import 'package:game_mentor/config/router/app_router_bottom.dart';
+import 'package:game_mentor/widgets/side_menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class NavbarCombinedScreen extends StatefulWidget {

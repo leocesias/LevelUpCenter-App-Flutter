@@ -37,7 +37,6 @@ class _ProfileConfigState extends State<ProfileConfig> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(height: 20),
           Center(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -55,7 +54,7 @@ class _ProfileConfigState extends State<ProfileConfig> {
                   ),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-                    child: Text('Configuration', style: TextStyle(fontSize: 20)),
+                    child: Text('Configuration', style: TextStyle(fontSize: 20, color: Colors.black)),
                   ),
                 ),
               ],

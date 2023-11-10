@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
-import 'package:GameMentor/src/providers/themeProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:game_mentor/providers/theme_provider.dart';
 
 class ThemeChangerScreen extends ConsumerWidget {
   static const name = 'theme_changer_screen';

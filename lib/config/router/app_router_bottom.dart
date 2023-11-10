@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
-import 'package:GameMentor/src/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/screens/screens.dart';
 
 class AppRouterBottom extends StatelessWidget {
   final int index;

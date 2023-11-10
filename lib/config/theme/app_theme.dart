@@ -1,6 +1,6 @@
 // ignore_for_file: file_names, unused_local_variable
-import 'package:GameMentor/config/theme/appColors.dart';
 import 'package:flutter/material.dart';
+import 'package:game_mentor/config/theme/app_colors.dart';
 
 class AppTheme {
   static ThemeData get theme {
