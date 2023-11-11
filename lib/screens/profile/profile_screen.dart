@@ -722,6 +722,53 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 
+class ColoredCheckbox extends StatefulWidget {
+  final bool value;
+  final ValueChanged<bool?>? onChanged;
+  final Color fillColor;
+
+  ColoredCheckbox({
+    required this.value,
+    required this.onChanged,
+    required this.fillColor,
+  });
+
+  @override
+  _ColoredCheckboxState createState() => _ColoredCheckboxState();
+}
+
+class _ColoredCheckboxState extends State<ColoredCheckbox> {
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        if (widget.onChanged != null) {
+          widget.onChanged!(!widget.value);
+        }
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          color: widget.value ? widget.fillColor : Colors.transparent,
+          border: Border.all(
+            color: Colors.black, // Puedes cambiar esto al color que desees
+            width: 2.0,
+          ),
+        ),
+        width: 20.0,
+        height: 20.0,
+        child: widget.value
+            ? Icon(
+          Icons.check,
+          size: 16.0,
+          color: Colors.white,
+        )
+            : null,
+      ),
+    );
+  }
+}
+
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -735,71 +782,125 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xFFF1F9EE), // Color de fondo para la pantalla
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const FlutterLogo(
-                size: 140.0,
+              // Reemplazar el logo de Flutter con el texto "Welcome back"
+              Text(
+                'Welcome back',
+                style: TextStyle(
+                  fontSize: 36.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Form(
                 child: Theme(
                   data: ThemeData(
                     brightness: Brightness.dark,
                     primarySwatch: Colors.teal,
-                    inputDecorationTheme: const InputDecorationTheme(
+                    inputDecorationTheme: InputDecorationTheme(
                       labelStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.0,
+                        fontSize: 18.0,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                   child: Container(
-                    padding: const EdgeInsets.all(70.0),
+                    padding: EdgeInsets.all(70.0),
                     child: Column(
                       children: <Widget>[
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Username",
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: "Username",
+                              labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
+                              fillColor: Colors.black,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                            keyboardType: TextInputType.emailAddress,
+                            style: TextStyle(color: Colors.black),
                           ),
-                          keyboardType: TextInputType.emailAddress,
                         ),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Password",
+                        Container(
+                          padding: EdgeInsets.symmetric(vertical: 10.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: "Password",
+                              labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
+                              fillColor: Colors.black,
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(25.0),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                            keyboardType: TextInputType.text,
+                            obscureText: true,
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
                           ),
-                          keyboardType: TextInputType.text,
-                          obscureText: true,
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Row(
                               children: <Widget>[
-                                Checkbox(
+                                ColoredCheckbox(
                                   value: _rememberMe,
                                   onChanged: (bool? value) {
                                     setState(() {
                                       _rememberMe = value!;
                                     });
                                   },
+                                  fillColor: Color(0xFFFF2273),
                                 ),
-                                const Text(
+                                SizedBox(width: 5),  // Agregado un espacio de 5
+                                Text(
                                   'Remember',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ],
                             ),
                             TextButton(
                               onPressed: () {
+                                // Agrega la lógica para "Forgot Password" aquí
                               },
-                              child: const Text(
+                              child: Text(
                                 'Forgot Password?',
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(
+                                  fontSize: 18.0,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
                           ],
@@ -811,61 +912,68 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Add your login logic here
+                  // Agrega tu lógica de inicio de sesión aquí
                 },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(150, 50),
-                ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: Text(
-                    "Login",
+                    "Sign In",
                     style: TextStyle(fontSize: 18),
                   ),
                 ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(150, 50),
+                  backgroundColor: Color(0xFFFFD33B), // Color de fondo para Sign In
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0), // Radio de los bordes
+                  ),
+                ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
+                  // Agrega tu lógica de registro aquí
                 },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(150, 50),
-                ),
-                child: const Padding(
+                child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   child: Text(
-                    "Register",
-                    style: TextStyle(fontSize: 18),
+                    "Sign Up",
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                ),
+                style: ElevatedButton.styleFrom(
+                  minimumSize: Size(150, 50),
+                  backgroundColor: Color(0xFF284A76), // Color de fondo para Sign Up
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0), // Radio de los bordes
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 "Or connect with",
-                style: TextStyle(color: Colors.white, fontSize: 16),
+                style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  ElevatedButton.icon(
-                    onPressed: () {
-                    },
-                    icon: const Icon(Icons.facebook),
-                    label: const Text("Facebook"),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(120, 40),
-                    ),
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.facebook, color: Color(0xFFFF2273), size: 40),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 10),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                    },
-                    icon: const Icon(Icons.email),
-                    label: const Text("Email"),
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(120, 40),
-                    ),
+                  SizedBox(width: 40),
+                  Column(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.email, color: Color(0xFFFF2273), size: 40),
+                      ),
+                    ],
                   ),
                 ],
               ),
