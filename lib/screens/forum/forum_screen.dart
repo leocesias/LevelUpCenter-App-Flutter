@@ -117,7 +117,7 @@ class _ForumPageState extends State<ForumPage> {
               SizedBox(width: 16),
             ],
           ),
-          SizedBox(height: 8), // Adjust spacing
+          SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
             child: Text(
@@ -130,31 +130,30 @@ class _ForumPageState extends State<ForumPage> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: 5, // Replace with the actual number of posts
+              itemCount: 5,
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: CircleAvatar(
                     radius: 20,
-                    backgroundImage: AssetImage('assets/images/coach.png'), // Replace with the actual image
+                    backgroundImage: AssetImage('assets/images/coach.png'),
                   ),
                   title: Text('Author Name',
                     style: GoogleFonts.robotoMono(),
-                  ), // Replace with the actual author name
+                  ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text('2 hours ago',
                         style: GoogleFonts.robotoMono(),
-                      ), // Replace with the actual time
+                      ),
                       Text(
                         'This is the description of the post. It can contain details about the topic being discussed.',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: GoogleFonts.robotoMono(),
-                      ), // Replace with the actual post description
+                      ),
                       ElevatedButton(
                         onPressed: () {
-                          // Handle see answers button tap
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -180,13 +179,11 @@ class _ForumPageState extends State<ForumPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          // Handle like button tap
                         },
                         icon: Icon(Icons.thumb_up, color: Color(0xFFFF2273)),
                       ),
                       IconButton(
                         onPressed: () {
-                          // Handle report button tap
                         },
                         icon: Icon(Icons.report, color: Color(0xFFFF2273)),
                       ),

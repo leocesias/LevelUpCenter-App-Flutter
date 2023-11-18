@@ -14,14 +14,13 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1F9EE), // Color de fondo para la pantalla
+      backgroundColor: Color(0xFFF1F9EE),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Reemplazar el logo de Flutter con el texto "Welcome back"
               Text(
                 'Welcome back',
                 style: TextStyle(
@@ -113,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                                   },
                                   fillColor: Color(0xFFFF2273),
                                 ),
-                                SizedBox(width: 5),  // Agregado un espacio de 5
+                                SizedBox(width: 5),
                                 Text(
                                   'Remember',
                                   style: TextStyle(
@@ -125,7 +124,6 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             TextButton(
                               onPressed: () {
-                                // Agrega la lógica para "Forgot Password" aquí
                               },
                               child: Text(
                                 'Forgot Password?',
@@ -144,7 +142,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  // Agrega tu lógica de inicio de sesión aquí
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -155,16 +152,15 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150, 50),
-                  backgroundColor: Color(0xFFFFD33B), // Color de fondo para Sign In
+                  backgroundColor: Color(0xFFFFD33B),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0), // Radio de los bordes
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Agrega tu lógica de registro aquí
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
@@ -175,9 +171,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 style: ElevatedButton.styleFrom(
                   minimumSize: Size(150, 50),
-                  backgroundColor: Color(0xFF284A76), // Color de fondo para Sign Up
+                  backgroundColor: Color(0xFF284A76),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0), // Radio de los bordes
+                    borderRadius: BorderRadius.circular(30.0),
                   ),
                 ),
               ),
@@ -245,7 +241,7 @@ class _ColoredCheckboxState extends State<ColoredCheckbox> {
         decoration: BoxDecoration(
           color: widget.value ? widget.fillColor : Colors.transparent,
           border: Border.all(
-            color: Colors.black, // Puedes cambiar esto al color que desees
+            color: Colors.black,
             width: 2.0,
           ),
         ),

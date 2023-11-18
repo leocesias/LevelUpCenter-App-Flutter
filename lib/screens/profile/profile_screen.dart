@@ -138,13 +138,11 @@ class _ProfileConfigState extends State<ProfileConfig> {
                       ),
                     ],
                   ),
-                  const SizedBox(width: 20), // Space between 'Image' and the next column
-                  // Details of the team in a column
+                  const SizedBox(width: 20),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Team details in individual rows
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
@@ -360,14 +358,13 @@ class _NotificationsState extends State<Notifications> {
         child: Column(
           children: [
             AppBar(
-              elevation: 0, // No shadow
+              elevation: 0,
               backgroundColor: Colors.transparent,
               title: const Text('LevelUpCenter'),
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(Icons.home_filled, size: 30),
                   onPressed: () {
-                    // Handle market button press
                   },
                 ),
                 IconButton(
@@ -496,7 +493,6 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _ProfilePageState createState() => _ProfilePageState();
 }
 
