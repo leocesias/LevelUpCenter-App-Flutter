@@ -8,10 +8,8 @@ class ProfileConfig extends StatefulWidget {
   State<ProfileConfig> createState() => _ProfileConfigState();
 }
 
-class _ProfileConfigState extends State<ProfileConfig> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
+/*
+  unused appBar
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight + 60),
         child: Column(
@@ -34,138 +32,135 @@ class _ProfileConfigState extends State<ProfileConfig> {
           ],
         ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                const Text('Profile', style: TextStyle(fontSize: 20)),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow[200]!),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
+ */
+
+class _ProfileConfigState extends State<ProfileConfig> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text('Profile', style: TextStyle(fontSize: 20)),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow[200]!),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                     ),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
+                      child: Text('Configuration', style: TextStyle(fontSize: 20, color: Colors.black)),
+                    ),
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-                    child: Text('Configuration', style: TextStyle(fontSize: 20, color: Colors.black)),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ElevatedButton(
-              onPressed: () {},
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade100),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  height: 180,
-                  child: Center(
-                    child: Icon(Icons.add_box, size: 70, color: Colors.pink,),
-                  ),
-                ),
+                ],
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Container(
-                            width: 100,
-                            height: 100,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.blue,
-                            ),
-                            child: const Center(
-                              child: Text('Image', style: TextStyle(color: Colors.white)),
-                            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              child: ElevatedButton(
+                onPressed: () {},
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade100),
+                  shape: MaterialStateProperty.all<OutlinedBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                    ),
+                  ),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 10.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 180,
+                    child: Center(
+                      child: Icon(Icons.add_box, size: 70, color: Colors.pink,),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Container(
+                          width: 140,
+                          height: 140,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.blue,
+                          ),
+                          child: const Center(
+                            child: Text('Image', style: TextStyle(color: Colors.white)),
                           ),
                         ),
-                      ],
-                    ),
-                    // Team Column
-                    const Column(
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 20), // Espacio entre 'Image' y la siguiente columna
+                  // Detalles del equipo en una columna
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 40),
-                                  child: Text('Team', style: TextStyle(fontSize: 20)),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 40),
-                                  child: Text('Age', style: TextStyle(fontSize: 20)),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 40),
-                                  child: Text('Country', style: TextStyle(fontSize: 20)),
-                                ),
-                              ],
-                            ),
-                            SizedBox(width: 20),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(left: 40),
-                                  child: Text('Language', style: TextStyle(fontSize: 20)),
-
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.only(left: 40),
-                                  child: Text('Strength', style: TextStyle(fontSize: 20)),
-                                ),
-                              ],
-                            ),
-                          ],
+                        // Detalles del equipo en filas individuales
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text('Team', style: TextStyle(fontSize: 20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text('Age', style: TextStyle(fontSize: 20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text('Country', style: TextStyle(fontSize: 20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text('Language', style: TextStyle(fontSize: 20)),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20),
+                          child: Text('Strength', style: TextStyle(fontSize: 20)),
                         ),
                       ],
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.topLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildIconButtonWithText('Price'),
-                _buildIconButtonWithText('Experiences'),
-                _buildIconButtonWithText('Videos'),
-                _buildIconButtonWithText('Channels'),
-              ],
+            const SizedBox(height: 20),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildIconButtonWithText('Price'),
+                  _buildIconButtonWithText('Experiences'),
+                  _buildIconButtonWithText('Videos'),
+                  _buildIconButtonWithText('Channels'),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
