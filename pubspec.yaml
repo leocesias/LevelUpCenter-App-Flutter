@@ -84,6 +84,7 @@ flutter:
   assets:
     - assets/images/image_1.png
     - assets/images/coach.png
+    - assets/images/Riot_Games_logo_icon.webp
     - .env
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

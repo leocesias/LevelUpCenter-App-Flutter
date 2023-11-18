@@ -504,256 +504,215 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + 60),
-        child: Column(
-          children: [
-            AppBar(
-              elevation: 0, // No shadow
-              backgroundColor: Colors.transparent,
-              title: const Text('LevelUpCenter'),
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.home_filled, size: 30),
-                  onPressed: () {
-                    // Handle market button press
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.notifications, size: 30),
-                  onPressed: () {
-                  },
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.home, size: 45),
-                    color: Colors.black,
-                    onPressed: () {
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.people, size: 45),
-                    color: Colors.black,
-                    onPressed: () {
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.gamepad, size: 45),
-                    color: Colors.black,
-                    onPressed: () {
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.email, size: 45),
-                    color: Colors.black,
-                    onPressed: () {
-                    },
-                  ),
-                ),
-                Expanded(
-                  child: IconButton(
-                    icon: const Icon(Icons.person, size: 45),
-                    color: Colors.black,
-                    onPressed: () {
-                    },
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-      body: Center(
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              const Padding(
-
-                padding: EdgeInsets.only(top: 15, bottom: 5),
-                child: Text(
-                  'Profile',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
-              ),
-
-              const Divider(thickness: 1, color: Colors.black),
-              Center(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          color: Colors.blue,
-                          child: const Center(
-                            child: Text(
-                              'No Image',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          'Name',
-                          style: TextStyle(fontSize: 20),
-                        ),
-                        Text(
-                          'Age',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        Text(
-                          'Country',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        Text(
-                          'City',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-
-              const Divider(thickness: 1, color: Colors.black),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  IconButton(
-                    icon: const Icon(Icons.privacy_tip),
-
-                    color: Colors.pinkAccent,
-                    onPressed: () {},
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Privacy',
-                      style: TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  IconButton(
-                    icon: const Icon(Icons.account_circle),
-                    color: Colors.pinkAccent,
-                    onPressed: () {},
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Change Account',
-                      style: TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  IconButton(
-                    icon: const Icon(Icons.update),
-
-                    color: Colors.pinkAccent,
-                    onPressed: () {},
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'App Updates',
-                      style: TextStyle(color: Colors.black, fontSize: 20),
-                    ),
-                  ),
-                ],
-              ),
-              const Divider(thickness: 1, color: Colors.black),
-              const Padding(
-                padding: EdgeInsets.only(left: 30, top: 15),
-                child: Align(
-                  alignment: Alignment.centerLeft,
+      body: SingleChildScrollView(
+        child: Center(
+          child: Align(
+            alignment: Alignment.topCenter,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.only(top: 45, bottom: 5),
                   child: Text(
-                    'Your favorite game',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    'Profile',
+                    style: GoogleFonts.robotoMono(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Center(
+                Divider(thickness: 1, color: Colors.black),
+                Center(
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Container(
-                            width: 100,
-                            height: 100,
-                            color: Colors.blue,
-                            child: const Center(
-                              child: Text(
-                                'No Image',
-                                style: TextStyle(color: Colors.white),
-                              ),
+                            width: 150,
+                            height: 150,
+                            color: Colors.transparent,
+                            child: Center(
+                              child: Image.asset('assets/images/coach.png'),
                             ),
                           ),
                         ),
                       ),
-                      const SizedBox(width: 20),
-                      const Column(
+                      SizedBox(width: 20),
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            'Game',
-                            style: TextStyle(fontSize: 20),
+                            'Erick',
+                            style: GoogleFonts.robotoMono(fontSize: 20),
                           ),
                           Text(
-                            'Genre',
-                            style: TextStyle(fontSize: 17),
+                            '19 years old',
+                            style: GoogleFonts.robotoMono(fontSize: 17),
                           ),
                           Text(
-                            'Coaches',
-                            style: TextStyle(fontSize: 17),
+                            'Peru',
+                            style: GoogleFonts.robotoMono(fontSize: 17),
+                          ),
+                          Text(
+                            'Lima',
+                            style: GoogleFonts.robotoMono(fontSize: 17),
                           ),
                         ],
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+
+                Divider(thickness: 1, color: Colors.black),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(Icons.privacy_tip, color: Colors.pinkAccent),
+                            SizedBox(width: 8), // Space between the icon and text
+                            Text(
+                              'Privacy',
+                              style: GoogleFonts.robotoMono(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(Icons.account_circle, color: Colors.pinkAccent),
+                            SizedBox(width: 8), // Espacio entre el icono y el texto
+                            Text(
+                              'Change Account',
+                              style: GoogleFonts.robotoMono(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      TextButton(
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            Icon(Icons.update, color: Colors.pinkAccent),
+                            SizedBox(width: 8), // Espacio entre el icono y el texto
+                            Text(
+                              'App Updates',
+                              style: GoogleFonts.robotoMono(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Divider(thickness: 1, color: Colors.black),
+                Padding(
+                  padding: const EdgeInsets.only(left: 30, top: 15),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Your favorite game',
+                      style: GoogleFonts.robotoMono(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: Container(
+                              width: 100,
+                              height: 100,
+                              color: Colors.transparent,
+                              child: Center(
+                                child: Image.asset('assets/images/Riot_Games_logo_icon.webp'),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              'Valorant',
+                              style: GoogleFonts.robotoMono(
+                                color: Colors.black,
+                                fontSize: 20,
+                              ),
+                            ),
+                            Text(
+                              'First Person Shooter',
+                              style: GoogleFonts.robotoMono(
+                                color: Colors.black,
+                                fontSize: 17,
+                              ),
+                            ),
+                            Text(
+                              '145 Coaches',
+                              style: GoogleFonts.robotoMono(
+                                color: Colors.black,
+                                fontSize: 17,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
 
 
 class ColoredCheckbox extends StatefulWidget {
