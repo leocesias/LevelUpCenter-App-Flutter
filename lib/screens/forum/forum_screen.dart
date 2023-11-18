@@ -24,6 +24,9 @@ class _ForumPageState extends State<ForumPage> {
                   child: Container(
                     height: 40,
                     child: TextField(
+                      style: GoogleFonts.robotoMono(
+                        textStyle: TextStyle(fontFamily: 'RobotoMono'),
+                      ),
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
                           vertical: 8.0,
@@ -50,10 +53,13 @@ class _ForumPageState extends State<ForumPage> {
                     color: Color(0xFF284A76),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 20), // Ajusta el padding según sea necesario
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: DropdownButton<String>(
-                    icon: Icon(Icons.keyboard_arrow_down, color: Colors.white), // Cambiar el color de la flecha a blanco
-                    underline: Container(), // Para eliminar la línea inferior del DropdownButton
+                    icon: Icon(Icons.keyboard_arrow_down, color: Colors.white),
+                    underline: Container(),
+                    style: GoogleFonts.robotoMono(
+                      textStyle: TextStyle(color: Colors.white),
+                    ),
                     items: <String>['Filter 1', 'Filter 2', 'Filter 3']
                         .map((String value) {
                       return DropdownMenuItem<String>(
@@ -85,6 +91,9 @@ class _ForumPageState extends State<ForumPage> {
                 child: Container(
                   height: 40,
                   child: TextField(
+                    style: GoogleFonts.robotoMono(
+                      textStyle: TextStyle(fontFamily: 'RobotoMono'),
+                    ),
                     decoration: InputDecoration(
                       contentPadding: EdgeInsets.symmetric(
                         vertical: 8.0,
@@ -113,9 +122,9 @@ class _ForumPageState extends State<ForumPage> {
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
             child: Text(
               'Forum',
-              style: TextStyle(
+              style: GoogleFonts.robotoMono(
+                color: Colors.black,
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
               ),
             ),
           ),
@@ -128,15 +137,20 @@ class _ForumPageState extends State<ForumPage> {
                     radius: 20,
                     backgroundImage: AssetImage('assets/images/coach.png'), // Replace with the actual image
                   ),
-                  title: Text('Author Name'), // Replace with the actual author name
+                  title: Text('Author Name',
+                    style: GoogleFonts.robotoMono(),
+                  ), // Replace with the actual author name
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('2 hours ago'), // Replace with the actual time
+                      Text('2 hours ago',
+                        style: GoogleFonts.robotoMono(),
+                      ), // Replace with the actual time
                       Text(
                         'This is the description of the post. It can contain details about the topic being discussed.',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
+                        style: GoogleFonts.robotoMono(),
                       ), // Replace with the actual post description
                       ElevatedButton(
                         onPressed: () {
@@ -147,7 +161,7 @@ class _ForumPageState extends State<ForumPage> {
                           children: [
                             Text(
                               'See Answers',
-                              style: TextStyle(color: Colors.black),
+                              style: GoogleFonts.robotoMono(color: Colors.black),
                             ),
                             Icon(
                               Icons.arrow_drop_down,
