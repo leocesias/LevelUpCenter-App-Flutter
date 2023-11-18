@@ -30,7 +30,7 @@ class _gamesResourcesState extends State<gamesResources> {
                     ),
                   ),
                 ),
-                Expanded(child: Container()), // Expanded to push the DropdownButton to the end
+                Expanded(child: Container()),
                 Container(
                   height: 40,
                   decoration: BoxDecoration(
@@ -62,7 +62,6 @@ class _gamesResourcesState extends State<gamesResources> {
             ),
           ),
           Divider(thickness: 1, color: Colors.black),
-          SizedBox(height: 8), // Adjust spacing
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
             child: Text(
@@ -71,6 +70,73 @@ class _gamesResourcesState extends State<gamesResources> {
                 color: Colors.black,
                 fontSize: 20,
               ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                Widget tile = ListTile(
+                  leading: Container(
+                    width: 100,
+                    height: 100,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/Riot_Games_logo_icon.webp'),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                  title: Text(
+                    //'$index Improve your Aim',
+                    'Improve your Aim',
+                    style: GoogleFonts.robotoMono(
+                      color: Colors.black,
+                      fontSize: 18,
+                    ),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Valorant',
+                        style: GoogleFonts.robotoMono(
+                          color: Colors.black,
+                          fontSize: 13,
+                        ),
+                      ),
+                      Text(
+                        'Author',
+                        style: GoogleFonts.robotoMono(
+                          color: Colors.black,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        'Here you will learn how to improve your aim using a shoot trainer in-game',
+                        style: GoogleFonts.robotoMono(
+                          color: Colors.black,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                  onTap: () {
+                  },
+                );
+                if (index >= 0) {
+                  return Column(
+                    children: [
+                      tile,
+                      Divider(thickness: 1, color: Colors.black),
+                    ],
+                  );
+                } else {
+                  return tile;
+                }
+              },
             ),
           ),
         ],
