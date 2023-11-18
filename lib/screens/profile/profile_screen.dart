@@ -148,35 +148,35 @@ class _ProfileConfigState extends State<ProfileConfig> {
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            'Team',
+                            '5D',
                             style: GoogleFonts.robotoMono(fontSize: 20),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            'Age',
+                            '32 years old',
                             style: GoogleFonts.robotoMono(fontSize: 20),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            'Country',
+                            'Brazil',
                             style: GoogleFonts.robotoMono(fontSize: 20),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            'Language',
+                            'English',
                             style: GoogleFonts.robotoMono(fontSize: 20),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
                           child: Text(
-                            'Strength',
+                            'Optimist',
                             style: GoogleFonts.robotoMono(fontSize: 20),
                           ),
                         ),
