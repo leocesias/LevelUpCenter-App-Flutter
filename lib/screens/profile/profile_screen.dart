@@ -1,5 +1,6 @@
-// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ProfileConfig extends StatefulWidget {
   const ProfileConfig({super.key});
@@ -43,34 +44,56 @@ class _ProfileConfigState extends State<ProfileConfig> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  const Text('Profile', style: TextStyle(fontSize: 20)),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.yellow[200]!),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      'Profile',
+                      style: GoogleFonts.robotoMono(fontSize: 20),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          Colors.yellow[200]!,
+                        ),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 16.0,
+                          horizontal: 24.0,
+                        ),
+                        child: Text(
+                          'Configuration',
+                          style: GoogleFonts.robotoMono(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 24.0),
-                      child: Text('Configuration', style: TextStyle(fontSize: 20, color: Colors.black)),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 10.0,
+                vertical: 10.0,
+              ),
               child: ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.lightGreen.shade100),
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Colors.lightGreen.shade100,
+                  ),
                   shape: MaterialStateProperty.all<OutlinedBorder>(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.zero,
@@ -83,7 +106,11 @@ class _ProfileConfigState extends State<ProfileConfig> {
                     width: double.infinity,
                     height: 180,
                     child: Center(
-                      child: Icon(Icons.add_box, size: 70, color: Colors.pink,),
+                      child: Icon(
+                        Icons.add_box,
+                        size: 70,
+                        color: Colors.pink,
+                      ),
                     ),
                   ),
                 ),
@@ -104,41 +131,54 @@ class _ProfileConfigState extends State<ProfileConfig> {
                           height: 140,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Colors.blue,
+                            color: Colors.transparent,
                           ),
-                          child: const Center(
-                            child: Text('Image', style: TextStyle(color: Colors.white)),
-                          ),
+                          child: Image.asset('assets/images/coach.png'),
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(width: 20), // Espacio entre 'Image' y la siguiente columna
-                  // Detalles del equipo en una columna
+                  const SizedBox(width: 20), // Space between 'Image' and the next column
+                  // Details of the team in a column
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Detalles del equipo en filas individuales
+                        // Team details in individual rows
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Text('Team', style: TextStyle(fontSize: 20)),
+                          child: Text(
+                            'Team',
+                            style: GoogleFonts.robotoMono(fontSize: 20),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Text('Age', style: TextStyle(fontSize: 20)),
+                          child: Text(
+                            'Age',
+                            style: GoogleFonts.robotoMono(fontSize: 20),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Text('Country', style: TextStyle(fontSize: 20)),
+                          child: Text(
+                            'Country',
+                            style: GoogleFonts.robotoMono(fontSize: 20),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Text('Language', style: TextStyle(fontSize: 20)),
+                          child: Text(
+                            'Language',
+                            style: GoogleFonts.robotoMono(fontSize: 20),
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 20),
-                          child: Text('Strength', style: TextStyle(fontSize: 20)),
+                          child: Text(
+                            'Strength',
+                            style: GoogleFonts.robotoMono(fontSize: 20),
+                          ),
                         ),
                       ],
                     ),
@@ -146,7 +186,6 @@ class _ProfileConfigState extends State<ProfileConfig> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
             Align(
               alignment: Alignment.topLeft,
               child: Column(
@@ -167,7 +206,7 @@ class _ProfileConfigState extends State<ProfileConfig> {
 
   Widget _buildIconButtonWithText(String text) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, top: 20),
+      padding: const EdgeInsets.only(left: 20, top: 15),
       child: ElevatedButton.icon(
         onPressed: () {
           // Handle button press
