@@ -66,7 +66,7 @@ class _ForumPageState extends State<ForumPage> {
                         value: value,
                         child: Text(
                           value,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       );
                     }).toList(),

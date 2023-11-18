@@ -50,7 +50,7 @@ class _gamesResourcesState extends State<gamesResources> {
                         value: value,
                         child: Text(
                           value,
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                       );
                     }).toList(),
