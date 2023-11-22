@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:game_mentor/screens/admin/configuration_screen.dart';
 import 'package:game_mentor/screens/admin/games/create_screen.dart';
 import 'package:game_mentor/screens/admin/games/list_screen.dart';
+import 'package:game_mentor/screens/admin/games/user_list_screen.dart';
 
 class AdminLayout extends StatefulWidget {
   const AdminLayout({super.key});
@@ -15,6 +17,8 @@ class _AdminLayoutState extends State<AdminLayout> {
   final List<Widget> _screens = [
     GameListScreen(),
     const GameCreateScreen(),
+    const UserListScreen(),
+    const ConfigurationScreen()
   ];
 
   @override
@@ -25,6 +29,7 @@ class _AdminLayoutState extends State<AdminLayout> {
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
@@ -40,6 +45,12 @@ class _AdminLayoutState extends State<AdminLayout> {
             icon: Icon(Icons.create),
             label: 'Create Game',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Users',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Configuration'),
         ],
       ),
     );

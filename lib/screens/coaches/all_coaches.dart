@@ -41,16 +41,6 @@ class _AllCoachesState extends State<AllCoaches> {
             color: Colors.black,
             thickness: 2,
           ),
-          Row(
-            children: [
-              IconButton(
-                icon: const Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.pop(context); // Regresa a la pantalla anterior
-                },
-              ),
-            ],
-          ),
           Expanded(
             child: FutureBuilder<List<Coach>>(
                 future: fetchCoaches(),

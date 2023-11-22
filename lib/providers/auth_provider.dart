@@ -43,7 +43,7 @@ class _AuthProviderState extends State<AuthProvider> {
   Widget build(BuildContext context) {
     // Return either the authenticated content or the login page
     if (isAuthenticated) {
-      return isAdmin ? const AdminLayout()  : const NavbarCombinedScreen();
+      return isAdmin ? const AdminLayout() : const NavbarCombinedScreen();
     }
     return const LoginPage();
   }

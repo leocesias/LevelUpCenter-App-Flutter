@@ -3,6 +3,7 @@ import 'package:game_mentor/domain/models/game/game.dart';
 import 'package:game_mentor/services/game_service.dart';
 
 class GameListScreen extends StatelessWidget {
+  const GameListScreen({super.key});
 
   Future<List<Game>> fetchGames() async {
     try {
@@ -18,6 +19,7 @@ class GameListScreen extends StatelessWidget {
       return [];
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Game>>(

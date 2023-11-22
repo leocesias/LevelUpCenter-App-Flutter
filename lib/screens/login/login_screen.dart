@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:game_mentor/screens/layouts/admin_layout.dart';
 import 'package:game_mentor/screens/login/register_screen.dart';
 import 'package:game_mentor/screens/navbar/navbarsCombinedScreen.dart';
 import 'package:game_mentor/services/auth_service.dart';
@@ -31,6 +32,12 @@ class _LoginPageState extends State<LoginPage> {
         await prefs.setString('token', responseData['token']);
         if (responseData['role'] == 0) {
           await prefs.setBool('admin', true);
+          if (mounted) {
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => const AdminLayout()),
+            );
+            return;
+          }
         }
       }
 
@@ -40,7 +47,14 @@ class _LoginPageState extends State<LoginPage> {
         );
       }
     } catch (ex) {
-      print(ex);
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Wrong credentials!'),
+            backgroundColor: Colors.amberAccent,
+          ),
+        );
+      }
     }
   }
 
