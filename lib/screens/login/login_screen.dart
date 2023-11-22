@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:game_mentor/services/auth_service.dart';
 import 'package:game_mentor/widgets/login/text_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:game_mentor/screens/login/register_screen.dart';
+import 'package:game_mentor/config/theme/app_colors.dart';
 import '../navbar/navbarsCombinedScreen.dart';
 
 class LoginPage extends StatefulWidget {
@@ -59,15 +60,15 @@ class _LoginPageState extends State<LoginPage> {
               ),
               const SizedBox(height: 30),
               Text(
-                'Bienvenido de vuelta!',
-                style: TextStyle(color: Colors.grey[700], fontSize: 16),
+                'Welcome Back',
+                style: TextStyle(color: Colors.black, fontSize: 40),
               ),
               const SizedBox(height: 25),
-              TextInput(controller: _usernameController, hintText: 'Usuario'),
+              TextInput(controller: _usernameController, hintText: 'Username'),
               const SizedBox(height: 10),
               TextInput(
                   controller: _passwordController,
-                  hintText: 'Contraseña',
+                  hintText: 'Password',
                   obscureText: true),
               const SizedBox(height: 10),
               // forgot password?
@@ -90,17 +91,34 @@ class _LoginPageState extends State<LoginPage> {
                     padding: const EdgeInsets.all(25),
                     margin: const EdgeInsets.symmetric(horizontal: 25),
                     decoration: BoxDecoration(
-                      color: Colors.black,
+                      color: AppColors.secondaryColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Center(
-                        child: Text("Iniciar sesión",
+                        child: Text("SIGN IN",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             )))),
-              )
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  );
+                },
+                child: Text(
+                  'REGISTER',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ],
           ),
         )));
