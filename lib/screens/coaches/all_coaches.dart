@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:game_mentor/screens/screens.dart';
+import 'package:game_mentor/domain/models/coach/coach.dart';
+import 'package:game_mentor/services/coach_service.dart';
+import 'package:game_mentor/widgets/coaches/coach_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AllCoaches extends StatefulWidget {
@@ -10,54 +12,54 @@ class AllCoaches extends StatefulWidget {
 }
 
 class _AllCoachesState extends State<AllCoaches> {
-  List<Widget> itemList = [
-    const NewCard(),
-    const NewCard(),
-    const NewCard(),
-    const NewCard(),
-    const NewCard(),
-  ];
+  Future<List<Coach>> fetchCoaches() async {
+    try {
+      final response = await CoachService.getCoaches();
+      List<Coach> coaches = [];
+      if (response.statusCode == 200) {
+        for (var coach in response.data!) {
+          coaches.add(Coach.fromJson(coach));
+        }
+      }
+      return coaches;
+    } catch (e) {
+      return [];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-             const SizedBox(height: 40),
-             const Search(),
-             const SizedBox(height: 20),
-             const Divider(
-              height: BorderSide.strokeAlignCenter,
-              color: Colors.black,
-              thickness: 2,
-            ),
-            Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.arrow_back),
-                  onPressed: () {
-                    Navigator.pop(context); // Regresa a la pantalla anterior
-                  },
-                ),
-              ],
-            ),
-            Expanded(
-
-                child: ListView.builder(
-                  itemCount: itemList.length,
-                  //shrinkWrap: true,
-                  //physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (BuildContext context, int index) {
-                    return itemList[index]; // Mostrar elementos de itemList
-                  },
-                ),
-            )
-
-             //NewCard(),
-          ],
-        ),
-
+        //mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const SizedBox(height: 40),
+          const Search(),
+          const SizedBox(height: 20),
+          const Divider(
+            height: BorderSide.strokeAlignCenter,
+            color: Colors.black,
+            thickness: 2,
+          ),
+          Expanded(
+            child: FutureBuilder<List<Coach>>(
+                future: fetchCoaches(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return CoachItem(coach: snapshot.data![index]);
+                      },
+                    );
+                  } else if (snapshot.hasError) {
+                    return Text('${snapshot.error}');
+                  }
+                  return const CircularProgressIndicator();
+                }),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -79,7 +81,6 @@ class _SearchState extends State<Search> {
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -92,34 +93,33 @@ class _SearchState extends State<Search> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                contentPadding: const EdgeInsets.symmetric(
+                    vertical: 10.0, horizontal: 10.0),
                 filled: true,
                 fillColor: const Color(0xFFF1F9EE),
                 hintText: 'Buscar...',
-                border: OutlineInputBorder( // Define un borde con esquinas redondeadas
-                  borderRadius: BorderRadius.circular(30.0), // Cambia el radio para modificar la curvatura de las esquinas
+                border: OutlineInputBorder(
+                  // Define un borde con esquinas redondeadas
+                  borderRadius: BorderRadius.circular(
+                      30.0), // Cambia el radio para modificar la curvatura de las esquinas
                 ),
               ),
-
               onChanged: (value) {
                 setState(() {
                   _searchQuery = value; // Actualiza la consulta de búsqueda
                 });
-
               },
             ),
-
           ),
         ),
-
         Container(
           width: 126,
           height: 40,
           padding: const EdgeInsets.only(left: 16.0),
           decoration: ShapeDecoration(
-            color: Color(0xFF284A76),
+            color: const Color(0xFF284A76),
             shape: RoundedRectangleBorder(
-              side: BorderSide(width: 1),
+              side: const BorderSide(width: 1),
               borderRadius: BorderRadius.circular(30),
             ),
           ),
@@ -136,7 +136,7 @@ class _SearchState extends State<Search> {
                 onSelected: (String value) {
                   // Lógica al seleccionar una opción
                   print('Opción seleccionada: $value');
-                  },
+                },
                 itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
                   const PopupMenuItem<String>(
                     value: 'opcion_1',
@@ -151,8 +151,8 @@ class _SearchState extends State<Search> {
                     child: Text('Opción 3'),
                   ),
                 ],
-                icon: const Icon(Icons.arrow_drop_down_circle_outlined, color: Colors.white),
-
+                icon: const Icon(Icons.arrow_drop_down_circle_outlined,
+                    color: Colors.white),
               )
             ],
           ),
@@ -162,89 +162,7 @@ class _SearchState extends State<Search> {
           'Resultados para: $_searchQuery',
           style: TextStyle(fontSize: 20),
         ),*/
-
       ],
-    );
-  }
-
-}
-
-class NewCard extends StatelessWidget {
-  const NewCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 350,
-      height: 180,
-      padding: const EdgeInsets.all(15),
-      margin: const EdgeInsets.only(left:16,top: 0,right: 16,bottom: 16),
-      decoration: ShapeDecoration(
-        color: const Color(0xFFF1F9EE),
-        shape: RoundedRectangleBorder(
-          //side: BorderSide(width: 1),
-          borderRadius: BorderRadius.circular(30),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Juan',
-                  style:
-                  TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Lima',
-                  style:
-                  TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Valorant',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    Icon(Icons.star, color: Colors.yellow, size: 24),
-                    Icon(Icons.star, color: Colors.yellow, size: 24),
-                    Icon(Icons.star, color: Colors.yellow, size: 24),
-                    Icon(Icons.star, color: Colors.yellow, size: 24),
-                    Icon(Icons.star, color: Colors.yellow, size: 24),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Text(
-                  '\"Self confidence is the key\"',
-                  style:
-                  TextStyle(fontSize: 14),
-                ),
-              ],
-            )
-          ),
-          const SizedBox(height: 10),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => InfoCoach(),
-                ),
-              );
-            },
-            child: Center(
-              child: Image.asset('assets/images/coach.png'), // Reemplaza 'your_image.png' con la ruta de tu imagen
-            ),
-          ),
-        ],
-      ),
-
     );
   }
 }

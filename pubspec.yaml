@@ -43,7 +43,9 @@ dependencies:
   json_annotation: ^4.8.1
   palette_generator: ^0.3.3+3
   flutter_dotenv: ^5.1.0
-  url_launcher: ^6.0.9
+  url_launcher: ^6.2.1
+  shared_preferences: ^2.2.2
+  fl_chart: ^0.36.4
 
 dev_dependencies:
 
@@ -85,6 +87,8 @@ flutter:
   assets:
     - assets/images/image_1.png
     - assets/images/coach.png
+    - assets/icon/logo.png
+    - assets/images/Riot_Games_logo_icon.webp
     - .env
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

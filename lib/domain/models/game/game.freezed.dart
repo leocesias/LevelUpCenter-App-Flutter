@@ -20,11 +20,12 @@ Game _$GameFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Game {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get logoUrl => throw _privateConstructorUsedError;
+  String get iconUrl => throw _privateConstructorUsedError;
   String get splashUrl => throw _privateConstructorUsedError;
+  String get bannerUrl => throw _privateConstructorUsedError;
   int get releaseYear => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
 
@@ -39,11 +40,12 @@ abstract class $GameCopyWith<$Res> {
       _$GameCopyWithImpl<$Res, Game>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       String description,
-      String logoUrl,
+      String iconUrl,
       String splashUrl,
+      String bannerUrl,
       int releaseYear,
       double rating});
 }
@@ -61,19 +63,20 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? description = null,
-    Object? logoUrl = null,
+    Object? iconUrl = null,
     Object? splashUrl = null,
+    Object? bannerUrl = null,
     Object? releaseYear = null,
     Object? rating = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -82,13 +85,17 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      logoUrl: null == logoUrl
-          ? _value.logoUrl
-          : logoUrl // ignore: cast_nullable_to_non_nullable
+      iconUrl: null == iconUrl
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
               as String,
       splashUrl: null == splashUrl
           ? _value.splashUrl
           : splashUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      bannerUrl: null == bannerUrl
+          ? _value.bannerUrl
+          : bannerUrl // ignore: cast_nullable_to_non_nullable
               as String,
       releaseYear: null == releaseYear
           ? _value.releaseYear
@@ -110,11 +117,12 @@ abstract class _$$GameImplCopyWith<$Res> implements $GameCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       String description,
-      String logoUrl,
+      String iconUrl,
       String splashUrl,
+      String bannerUrl,
       int releaseYear,
       double rating});
 }
@@ -129,19 +137,20 @@ class __$$GameImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? description = null,
-    Object? logoUrl = null,
+    Object? iconUrl = null,
     Object? splashUrl = null,
+    Object? bannerUrl = null,
     Object? releaseYear = null,
     Object? rating = null,
   }) {
     return _then(_$GameImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -150,13 +159,17 @@ class __$$GameImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      logoUrl: null == logoUrl
-          ? _value.logoUrl
-          : logoUrl // ignore: cast_nullable_to_non_nullable
+      iconUrl: null == iconUrl
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
               as String,
       splashUrl: null == splashUrl
           ? _value.splashUrl
           : splashUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      bannerUrl: null == bannerUrl
+          ? _value.bannerUrl
+          : bannerUrl // ignore: cast_nullable_to_non_nullable
               as String,
       releaseYear: null == releaseYear
           ? _value.releaseYear
@@ -174,11 +187,12 @@ class __$$GameImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GameImpl implements _Game {
   const _$GameImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.description,
-      required this.logoUrl,
+      required this.iconUrl,
       required this.splashUrl,
+      required this.bannerUrl,
       required this.releaseYear,
       required this.rating});
 
@@ -186,15 +200,17 @@ class _$GameImpl implements _Game {
       _$$GameImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   @override
   final String description;
   @override
-  final String logoUrl;
+  final String iconUrl;
   @override
   final String splashUrl;
+  @override
+  final String bannerUrl;
   @override
   final int releaseYear;
   @override
@@ -202,7 +218,7 @@ class _$GameImpl implements _Game {
 
   @override
   String toString() {
-    return 'Game(id: $id, name: $name, description: $description, logoUrl: $logoUrl, splashUrl: $splashUrl, releaseYear: $releaseYear, rating: $rating)';
+    return 'Game(id: $id, name: $name, description: $description, iconUrl: $iconUrl, splashUrl: $splashUrl, bannerUrl: $bannerUrl, releaseYear: $releaseYear, rating: $rating)';
   }
 
   @override
@@ -214,9 +230,11 @@ class _$GameImpl implements _Game {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.splashUrl, splashUrl) ||
                 other.splashUrl == splashUrl) &&
+            (identical(other.bannerUrl, bannerUrl) ||
+                other.bannerUrl == bannerUrl) &&
             (identical(other.releaseYear, releaseYear) ||
                 other.releaseYear == releaseYear) &&
             (identical(other.rating, rating) || other.rating == rating));
@@ -224,8 +242,8 @@ class _$GameImpl implements _Game {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, logoUrl,
-      splashUrl, releaseYear, rating);
+  int get hashCode => Object.hash(runtimeType, id, name, description, iconUrl,
+      splashUrl, bannerUrl, releaseYear, rating);
 
   @JsonKey(ignore: true)
   @override
@@ -243,26 +261,29 @@ class _$GameImpl implements _Game {
 
 abstract class _Game implements Game {
   const factory _Game(
-      {required final int id,
+      {final int? id,
       required final String name,
       required final String description,
-      required final String logoUrl,
+      required final String iconUrl,
       required final String splashUrl,
+      required final String bannerUrl,
       required final int releaseYear,
       required final double rating}) = _$GameImpl;
 
   factory _Game.fromJson(Map<String, dynamic> json) = _$GameImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override
   String get description;
   @override
-  String get logoUrl;
+  String get iconUrl;
   @override
   String get splashUrl;
+  @override
+  String get bannerUrl;
   @override
   int get releaseYear;
   @override
