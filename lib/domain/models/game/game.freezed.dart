@@ -20,7 +20,7 @@ Game _$GameFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Game {
-  int get id => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get iconUrl => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $GameCopyWith<$Res> {
       _$GameCopyWithImpl<$Res, Game>;
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       String description,
       String iconUrl,
@@ -63,7 +63,7 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? description = null,
     Object? iconUrl = null,
@@ -73,10 +73,10 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
     Object? rating = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ abstract class _$$GameImplCopyWith<$Res> implements $GameCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
+      {int? id,
       String name,
       String description,
       String iconUrl,
@@ -137,7 +137,7 @@ class __$$GameImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? description = null,
     Object? iconUrl = null,
@@ -147,10 +147,10 @@ class __$$GameImplCopyWithImpl<$Res>
     Object? rating = null,
   }) {
     return _then(_$GameImpl(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,7 @@ class __$$GameImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GameImpl implements _Game {
   const _$GameImpl(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.description,
       required this.iconUrl,
@@ -200,7 +200,7 @@ class _$GameImpl implements _Game {
       _$$GameImplFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
   final String name;
   @override
@@ -261,7 +261,7 @@ class _$GameImpl implements _Game {
 
 abstract class _Game implements Game {
   const factory _Game(
-      {required final int id,
+      {final int? id,
       required final String name,
       required final String description,
       required final String iconUrl,
@@ -273,7 +273,7 @@ abstract class _Game implements Game {
   factory _Game.fromJson(Map<String, dynamic> json) = _$GameImpl.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
   String get name;
   @override

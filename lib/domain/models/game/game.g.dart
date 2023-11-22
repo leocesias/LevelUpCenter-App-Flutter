@@ -7,7 +7,7 @@ part of 'game.dart';
 // **************************************************************************
 
 _$GameImpl _$$GameImplFromJson(Map<String, dynamic> json) => _$GameImpl(
-      id: json['id'] as int,
+      id: json['id'] as int?,
       name: json['name'] as String,
       description: json['description'] as String,
       iconUrl: json['iconUrl'] as String,

@@ -29,6 +29,9 @@ class _LoginPageState extends State<LoginPage> {
       if (responseData.containsKey('token')) {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', responseData['token']);
+        if (responseData['role'] == 0) {
+          await prefs.setBool('admin', true);
+        }
       }
 
       if (mounted) {

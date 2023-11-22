@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:game_mentor/screens/layouts/admin_layout.dart';
 import 'package:game_mentor/screens/login/login_screen.dart';
 import 'package:game_mentor/screens/navbar/navbarsCombinedScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -12,6 +13,7 @@ class AuthProvider extends StatefulWidget {
 
 class _AuthProviderState extends State<AuthProvider> {
   bool isAuthenticated = false; // Set initial authentication state
+  bool isAdmin = false;
 
   @override
   void initState() {
@@ -29,15 +31,20 @@ class _AuthProviderState extends State<AuthProvider> {
     // For demonstration purposes, this assumes the token is stored in SharedPreferences
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
+    bool? admin = prefs.getBool('admin');
 
     setState(() {
       isAuthenticated = token != null; // Update the authentication status
+      isAdmin = admin!;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     // Return either the authenticated content or the login page
-    return isAuthenticated ? const NavbarCombinedScreen() : const LoginPage();
+    if (isAuthenticated) {
+      return isAdmin ? const AdminLayout()  : const NavbarCombinedScreen();
+    }
+    return const LoginPage();
   }
 }

@@ -6,7 +6,7 @@ part 'game.g.dart';
 @freezed
 class Game with _$Game {
   const factory Game({
-    required int id,
+    int? id,
     required String name,
     required String description,
     required String iconUrl,
