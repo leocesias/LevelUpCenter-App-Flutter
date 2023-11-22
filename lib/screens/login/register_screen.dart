@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_mentor/widgets/login/text_input.dart';
 import 'package:game_mentor/config/theme/app_colors.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../navbar/navbarsCombinedScreen.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
