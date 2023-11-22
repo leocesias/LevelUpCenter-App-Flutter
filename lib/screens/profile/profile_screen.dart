@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:game_mentor/providers/auth_provider.dart';
+import 'package:game_mentor/services/auth_service.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,6 +20,11 @@ class _ProfileConfigState extends State<ProfileConfig> {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const AuthProvider()));
     }
+  }
+
+  Future<Map<String, dynamic>> fetchProfile() async {
+    final response = await AuthService.getProfile();
+    return response.data;
   }
 
   @override
@@ -69,39 +75,6 @@ class _ProfileConfigState extends State<ProfileConfig> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10.0,
-                vertical: 10.0,
-              ),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.lightGreen.shade100,
-                  ),
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 180,
-                    child: Center(
-                      child: Icon(
-                        Icons.add_box,
-                        size: 70,
-                        color: Colors.pink,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.all(16.0),
@@ -126,46 +99,33 @@ class _ProfileConfigState extends State<ProfileConfig> {
                   ),
                   const SizedBox(width: 20),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            '5D',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            '32 years old',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            'Brazil',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            'English',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            'Optimist',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: FutureBuilder(
+                        future: fetchProfile(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      snapshot.data!['firstName'],
+                                      style:
+                                          GoogleFonts.robotoMono(fontSize: 20),
+                                    )),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Text(
+                                    snapshot.data!['lastName'],
+                                    style: GoogleFonts.robotoMono(fontSize: 20),
+                                  ),
+                                )
+                              ],
+                            );
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        }),
                   ),
                 ],
               ),
