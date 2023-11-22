@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:game_mentor/screens/login/register_screen.dart';
 import 'package:game_mentor/screens/navbar/navbarsCombinedScreen.dart';
 import 'package:game_mentor/services/auth_service.dart';
 import 'package:game_mentor/widgets/login/text_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:game_mentor/screens/login/register_screen.dart';
-import 'package:game_mentor/config/theme/app_colors.dart';
-import '../navbar/navbarsCombinedScreen.dart';
-
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -111,8 +108,8 @@ class _LoginPageState extends State<LoginPage> {
                     MaterialPageRoute(builder: (context) => RegisterScreen()),
                   );
                 },
-                child: Text(
-                  'REGISTER',
+                child: const Text(
+                  'Registrarse',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -124,155 +121,4 @@ class _LoginPageState extends State<LoginPage> {
           ),
         )));
   }
-// class _LoginPageState extends State<LoginPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: const Color(0xFFF1F9EE),
-//       body: Stack(
-//         fit: StackFit.expand,
-//         children: <Widget>[
-//           Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: <Widget>[
-//               const Text(
-//                 'Welcome back',
-//                 style: TextStyle(
-//                   fontSize: 36.0,
-//                   fontWeight: FontWeight.bold,
-//                 ),
-//               ),
-//               Form(
-//                 child: Theme(
-//                   data: ThemeData(
-//                     brightness: Brightness.dark,
-//                     primarySwatch: Colors.teal,
-//                     inputDecorationTheme: const InputDecorationTheme(
-//                       labelStyle: TextStyle(
-//                         fontSize: 18.0,
-//                         color: Colors.black,
-//                       ),
-//                     ),
-//                   ),
-//                   child: Container(
-//                     padding: const EdgeInsets.all(70.0),
-//                     child: Column(
-//                       children: <Widget>[
-//                         Container(
-//                           padding: const EdgeInsets.symmetric(vertical: 10.0),
-//                           child: TextFormField(
-//                             decoration: InputDecoration(
-//                               labelText: "Username",
-//                               labelStyle: const TextStyle(
-//                                   fontSize: 18.0, color: Colors.black),
-//                               fillColor: Colors.black,
-//                               focusedBorder: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(25.0),
-//                                 borderSide: const BorderSide(
-//                                   color: Colors.black,
-//                                 ),
-//                               ),
-//                               enabledBorder: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(25.0),
-//                                 borderSide: const BorderSide(
-//                                   color: Colors.black,
-//                                   width: 2.0,
-//                                 ),
-//                               ),
-//                             ),
-//                             keyboardType: TextInputType.emailAddress,
-//                             style: const TextStyle(color: Colors.black),
-//                           ),
-//                         ),
-//                         Container(
-//                           padding: const EdgeInsets.symmetric(vertical: 10.0),
-//                           child: TextFormField(
-//                             decoration: InputDecoration(
-//                               labelText: "Password",
-//                               labelStyle: const TextStyle(
-//                                   fontSize: 18.0, color: Colors.black),
-//                               fillColor: Colors.black,
-//                               focusedBorder: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(25.0),
-//                                 borderSide: const BorderSide(
-//                                   color: Colors.black,
-//                                 ),
-//                               ),
-//                               enabledBorder: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(25.0),
-//                                 borderSide: const BorderSide(
-//                                   color: Colors.black,
-//                                   width: 2.0,
-//                                 ),
-//                               ),
-//                             ),
-//                             keyboardType: TextInputType.text,
-//                             obscureText: true,
-//                             style: const TextStyle(
-//                               color: Colors.black,
-//                             ),
-//                           ),
-//                         ),
-//                         const SizedBox(height: 20),
-//                         Column(
-//                           mainAxisAlignment: MainAxisAlignment.start,
-//                           children: <Widget>[
-//                             TextButton(
-//                               onPressed: () {},
-//                               child: const Text(
-//                                 'Forgot Password?',
-//                                 style: TextStyle(
-//                                   fontSize: 18.0,
-//                                   color: Colors.black,
-//                                 ),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                 ),
-//               ),
-//               ElevatedButton(
-//                 onPressed: () {},
-//                 style: ElevatedButton.styleFrom(
-//                   minimumSize: const Size(150, 50),
-//                   backgroundColor: const Color(0xFFFFD33B),
-//                   shape: RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(30.0),
-//                   ),
-//                 ),
-//                 child: const Padding(
-//                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-//                   child: Text(
-//                     "Sign In",
-//                     style: TextStyle(fontSize: 18),
-//                   ),
-//                 ),
-//               ),
-//               const SizedBox(height: 20),
-//               ElevatedButton(
-//                 onPressed: () {},
-//                 style: ElevatedButton.styleFrom(
-//                   minimumSize: const Size(150, 50),
-//                   backgroundColor: const Color(0xFF284A76),
-//                   shape: RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(30.0),
-//                   ),
-//                 ),
-//                 child: const Padding(
-//                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-//                   child: Text(
-//                     "Sign Up",
-//                     style: TextStyle(fontSize: 18, color: Colors.white),
-//                   ),
-//                 ),
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
 }
