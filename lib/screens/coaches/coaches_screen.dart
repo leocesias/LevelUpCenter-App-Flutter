@@ -1,8 +1,8 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
+import 'package:game_mentor/screens/screens.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:status_bar_control/status_bar_control.dart';
 
 class CoachesScreen extends StatefulWidget {
   const CoachesScreen({super.key});
@@ -12,89 +12,18 @@ class CoachesScreen extends StatefulWidget {
 }
 
 class _CoachesScreenState extends State<CoachesScreen> {
-  void _onNavBarVisibilityChanged(bool isHidden) {
-    setState(() {});
-    StatusBarControl.setHidden(isHidden);
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    final statusBarHeight = MediaQuery.of(context).padding.top;
 
-    return Scaffold(
+    return const Scaffold(
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: statusBarHeight),
-                child: MyBar(
-                  onNavBarVisibilityChanged: _onNavBarVisibilityChanged,
-                ),
-              ),
-              const Divider(
-                color: Colors.black,
-                thickness: 2,
-              ),
-              //MyHome(),
-              const MyCoach(),
-            ],
-          ),
+            child: MyCoach()
         )
-        // Mueve el floatingActionButton
         );
-  }
-}
-
-class MyBar extends StatelessWidget {
-  final Function(bool) onNavBarVisibilityChanged;
-
-  const MyBar({Key? key, required this.onNavBarVisibilityChanged})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          fit: FlexFit.loose,
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 12, top: 2, right: 10, bottom: 0),
-            child: Align(
-              alignment: Alignment.center,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'GameMentor',
-                      style: GoogleFonts.robotoMono(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.home), // Primer ícono a la derecha
-                    onPressed: () {
-                      // Lógica cuando se presiona el primer ícono
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                        Icons.notifications), // Segundo ícono a la derecha
-                    onPressed: () {
-                      // Lógica cuando se presiona el segundo ícono
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+    }
 }
 
 class MyCoach extends StatefulWidget {
@@ -122,7 +51,12 @@ class _MyCoachState extends State<MyCoach> {
                 ),
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AllCoaches()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
                       Colors.amberAccent, // Cambia el color de fondo del botón
@@ -204,13 +138,20 @@ class _CarouselState extends State<Carousel> {
               left: 20.0), // Ajusta el valor de left según el margen deseado
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Text(
-              widget.title,
-              style: GoogleFonts.robotoMono(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
+            child:
+            GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, '/all_coaches');
+              },
+              child: Text(
+                widget.title,
+                style: GoogleFonts.robotoMono(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
+
           ),
         ),
         CarouselSlider(

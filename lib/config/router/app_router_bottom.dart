@@ -13,6 +13,9 @@ class AppRouterBottom extends StatelessWidget {
     List<Widget> myList = [
       const HomeScreen(),
       const CoachesScreen(),
+      const AllCoaches(),
+      const InfoCoach(),
+      const ReserveCoach(),
       const GamesScreen(),
       const ActivitiesScreen(),
       const ProfileConfig(),

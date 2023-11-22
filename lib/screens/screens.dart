@@ -1,5 +1,8 @@
 export 'package:game_mentor/screens/activities/activities_screen.dart';
 export 'package:game_mentor/screens/coaches/coaches_screen.dart';
+export 'package:game_mentor/screens/coaches/all_coaches.dart';
+export 'package:game_mentor/screens/coaches/info_coach.dart';
+export 'package:game_mentor/screens/coaches/reserve_coach.dart';
 export 'package:game_mentor/screens/games/games_screen.dart';
 export 'package:game_mentor/screens/home/home_screen.dart';
 export 'package:game_mentor/screens/profile/profile_screen.dart';
