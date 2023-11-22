@@ -10,8 +10,9 @@ _$GameImpl _$$GameImplFromJson(Map<String, dynamic> json) => _$GameImpl(
       id: json['id'] as int,
       name: json['name'] as String,
       description: json['description'] as String,
-      logoUrl: json['logoUrl'] as String,
+      iconUrl: json['iconUrl'] as String,
       splashUrl: json['splashUrl'] as String,
+      bannerUrl: json['bannerUrl'] as String,
       releaseYear: json['releaseYear'] as int,
       rating: (json['rating'] as num).toDouble(),
     );
@@ -21,8 +22,9 @@ Map<String, dynamic> _$$GameImplToJson(_$GameImpl instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'logoUrl': instance.logoUrl,
+      'iconUrl': instance.iconUrl,
       'splashUrl': instance.splashUrl,
+      'bannerUrl': instance.bannerUrl,
       'releaseYear': instance.releaseYear,
       'rating': instance.rating,
     };

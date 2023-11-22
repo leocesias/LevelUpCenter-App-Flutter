@@ -1,260 +1,124 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:game_mentor/screens/login/register_screen.dart';
+import 'package:game_mentor/screens/navbar/navbarsCombinedScreen.dart';
+import 'package:game_mentor/services/auth_service.dart';
+import 'package:game_mentor/widgets/login/text_input.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
-  bool _rememberMe = false;
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  Future<void> _login() async {
+    try {
+      final response = await AuthService.login(
+        _usernameController.text,
+        _passwordController.text,
+      );
+      final Map<String, dynamic> responseData = response.data;
+
+      if (responseData.containsKey('token')) {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', responseData['token']);
+      }
+
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const NavbarCombinedScreen()),
+        );
+      }
+    } catch (ex) {
+      print(ex);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF1F9EE),
-      body: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          Column(
+        backgroundColor: const Color(0xFFF1F9EE),
+        body: SafeArea(
+            child: Center(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: [
+              const SizedBox(height: 10),
+              // Logo
+              const Icon(
+                Icons.lock,
+                size: 100,
+              ),
+              const SizedBox(height: 30),
               Text(
-                'Welcome back',
-                style: TextStyle(
-                  fontSize: 36.0,
-                  fontWeight: FontWeight.bold,
+                'Bienvenido de vuelta!',
+                style: TextStyle(color: Colors.grey[700], fontSize: 16),
+              ),
+              const SizedBox(height: 25),
+              TextInput(controller: _usernameController, hintText: 'Usuario'),
+              const SizedBox(height: 10),
+              TextInput(
+                  controller: _passwordController,
+                  hintText: 'Contraseña',
+                  obscureText: true),
+              const SizedBox(height: 10),
+              // forgot password?
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
                 ),
               ),
-              Form(
-                child: Theme(
-                  data: ThemeData(
-                    brightness: Brightness.dark,
-                    primarySwatch: Colors.teal,
-                    inputDecorationTheme: InputDecorationTheme(
-                      labelStyle: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.black,
-                      ),
+              const SizedBox(height: 25),
+              GestureDetector(
+                onTap: _login,
+                child: Container(
+                    padding: const EdgeInsets.all(25),
+                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                  ),
-                  child: Container(
-                    padding: EdgeInsets.all(70.0),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 10.0),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: "Username",
-                              labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
-                              fillColor: Colors.black,
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                            keyboardType: TextInputType.emailAddress,
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 10.0),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              labelStyle: TextStyle(fontSize: 18.0, color: Colors.black),
-                              fillColor: Colors.black,
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25.0),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                            keyboardType: TextInputType.text,
-                            obscureText: true,
+                    child: const Center(
+                        child: Text("Iniciar sesión",
                             style: TextStyle(
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                ColoredCheckbox(
-                                  value: _rememberMe,
-                                  onChanged: (bool? value) {
-                                    setState(() {
-                                      _rememberMe = value!;
-                                    });
-                                  },
-                                  fillColor: Color(0xFFFF2273),
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Remember',
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            TextButton(
-                              onPressed: () {
-                              },
-                              child: Text(
-                                'Forgot Password?',
-                                style: TextStyle(
-                                  fontSize: 18.0,
-                                  color: Colors.black,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            )))),
               ),
-              ElevatedButton(
+              const SizedBox(height: 20),
+              TextButton(
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  );
                 },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  child: Text(
-                    "Sign In",
-                    style: TextStyle(fontSize: 18),
+                child: const Text(
+                  'Registrarse',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
                   ),
                 ),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(150, 50),
-                  backgroundColor: Color(0xFFFFD33B),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                },
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-                  child: Text(
-                    "Sign Up",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ),
-                style: ElevatedButton.styleFrom(
-                  minimumSize: Size(150, 50),
-                  backgroundColor: Color(0xFF284A76),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                ),
-              ),
-              SizedBox(height: 20),
-              Text(
-                "Or connect with",
-                style: TextStyle(fontSize: 16),
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.facebook, color: Color(0xFFFF2273), size: 40),
-                      ),
-                    ],
-                  ),
-                  SizedBox(width: 40),
-                  Column(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.email, color: Color(0xFFFF2273), size: 40),
-                      ),
-                    ],
-                  ),
-                ],
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class ColoredCheckbox extends StatefulWidget {
-  final bool value;
-  final ValueChanged<bool?>? onChanged;
-  final Color fillColor;
-
-  ColoredCheckbox({
-    required this.value,
-    required this.onChanged,
-    required this.fillColor,
-  });
-
-  @override
-  _ColoredCheckboxState createState() => _ColoredCheckboxState();
-}
-
-class _ColoredCheckboxState extends State<ColoredCheckbox> {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (widget.onChanged != null) {
-          widget.onChanged!(!widget.value);
-        }
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          color: widget.value ? widget.fillColor : Colors.transparent,
-          border: Border.all(
-            color: Colors.black,
-            width: 2.0,
-          ),
-        ),
-        width: 20.0,
-        height: 20.0,
-        child: widget.value
-            ? Icon(
-          Icons.check,
-          size: 16.0,
-          color: Colors.white,
-        )
-            : null,
-      ),
-    );
+        )));
   }
 }

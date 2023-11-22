@@ -3,7 +3,8 @@ import 'package:game_mentor/domain/models/game/game.dart';
 import 'package:game_mentor/util/http.dart';
 
 class GameService {
-  static getMany() async => await dio.get('/games');
+  static Future<Response<List<dynamic>>> getMany() async =>
+      await dio.get('/games');
 
   static getOne(int id) async => await dio.get('/games/$id');
 

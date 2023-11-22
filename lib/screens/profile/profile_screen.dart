@@ -1,6 +1,8 @@
-
 import 'package:flutter/material.dart';
+import 'package:game_mentor/providers/auth_provider.dart';
+import 'package:game_mentor/services/auth_service.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileConfig extends StatefulWidget {
   const ProfileConfig({super.key});
@@ -9,33 +11,22 @@ class ProfileConfig extends StatefulWidget {
   State<ProfileConfig> createState() => _ProfileConfigState();
 }
 
-/*
-  unused appBar
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight + 60),
-        child: Column(
-          children: [
-            AppBar(
-              elevation: 0,
-              backgroundColor: Colors.transparent,
-              title: const Text('LevelUpCenter'),
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.home_filled, size: 30),
-                  onPressed: () {},
-                ),
-                IconButton(
-                  icon: const Icon(Icons.notifications, size: 30),
-                  onPressed: () {},
-                ),
-              ],
-            )
-          ],
-        ),
-      ),
- */
-
 class _ProfileConfigState extends State<ProfileConfig> {
+  Future<void> _logout(BuildContext context) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('token');
+
+    if (mounted) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const AuthProvider()));
+    }
+  }
+
+  Future<Map<String, dynamic>?> fetchProfile() async {
+    final response = await AuthService.getProfile();
+    return response.data;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +50,8 @@ class _ProfileConfigState extends State<ProfileConfig> {
                         backgroundColor: MaterialStateProperty.all<Color>(
                           Colors.yellow[200]!,
                         ),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
@@ -80,39 +72,6 @@ class _ProfileConfigState extends State<ProfileConfig> {
                       ),
                     ),
                   ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 10.0,
-                vertical: 10.0,
-              ),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Colors.lightGreen.shade100,
-                  ),
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                    ),
-                  ),
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 180,
-                    child: Center(
-                      child: Icon(
-                        Icons.add_box,
-                        size: 70,
-                        color: Colors.pink,
-                      ),
-                    ),
-                  ),
                 ),
               ),
             ),
@@ -140,46 +99,33 @@ class _ProfileConfigState extends State<ProfileConfig> {
                   ),
                   const SizedBox(width: 20),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            '5D',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            '32 years old',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            'Brazil',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            'English',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Text(
-                            'Optimist',
-                            style: GoogleFonts.robotoMono(fontSize: 20),
-                          ),
-                        ),
-                      ],
-                    ),
+                    child: FutureBuilder(
+                        future: fetchProfile(),
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                    padding: const EdgeInsets.only(left: 20),
+                                    child: Text(
+                                      snapshot.data!['firstName'],
+                                      style:
+                                          GoogleFonts.robotoMono(fontSize: 20),
+                                    )),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 20),
+                                  child: Text(
+                                    snapshot.data!['lastName'],
+                                    style: GoogleFonts.robotoMono(fontSize: 20),
+                                  ),
+                                )
+                              ],
+                            );
+                          } else {
+                            return const CircularProgressIndicator();
+                          }
+                        }),
                   ),
                 ],
               ),
@@ -196,6 +142,8 @@ class _ProfileConfigState extends State<ProfileConfig> {
                 ],
               ),
             ),
+            ElevatedButton(
+                onPressed: () => _logout(context), child: const Text('Logout'))
           ],
         ),
       ),
@@ -219,10 +167,8 @@ class _ProfileConfigState extends State<ProfileConfig> {
   }
 }
 
-
 class FeedbackMailbox extends StatefulWidget {
   const FeedbackMailbox({super.key});
-
 
   @override
   State<FeedbackMailbox> createState() => _FeedbackMailboxState();
@@ -243,13 +189,11 @@ class _FeedbackMailboxState extends State<FeedbackMailbox> {
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(Icons.home_filled, size: 30),
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                 ),
                 IconButton(
                   icon: const Icon(Icons.notifications, size: 30),
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -260,40 +204,35 @@ class _FeedbackMailboxState extends State<FeedbackMailbox> {
                   child: IconButton(
                     icon: const Icon(Icons.home, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.people, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.gamepad, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.email, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.person, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ],
@@ -364,13 +303,11 @@ class _NotificationsState extends State<Notifications> {
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(Icons.home_filled, size: 30),
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                 ),
                 IconButton(
                   icon: const Icon(Icons.notifications, size: 30),
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -381,40 +318,35 @@ class _NotificationsState extends State<Notifications> {
                   child: IconButton(
                     icon: const Icon(Icons.home, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.people, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.gamepad, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.email, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 Expanded(
                   child: IconButton(
                     icon: const Icon(Icons.person, size: 45),
                     color: Colors.black,
-                    onPressed: () {
-                    },
+                    onPressed: () {},
                   ),
                 ),
               ],
@@ -561,7 +493,6 @@ class _ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                 ),
-
                 Divider(thickness: 1, color: Colors.black),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -573,7 +504,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Row(
                           children: [
                             Icon(Icons.privacy_tip, color: Colors.pinkAccent),
-                            SizedBox(width: 8), // Space between the icon and text
+                            SizedBox(
+                                width: 8), // Space between the icon and text
                             Text(
                               'Privacy',
                               style: GoogleFonts.robotoMono(
@@ -596,8 +528,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         onPressed: () {},
                         child: Row(
                           children: [
-                            Icon(Icons.account_circle, color: Colors.pinkAccent),
-                            SizedBox(width: 8), // Espacio entre el icono y el texto
+                            Icon(Icons.account_circle,
+                                color: Colors.pinkAccent),
+                            SizedBox(
+                                width: 8), // Espacio entre el icono y el texto
                             Text(
                               'Change Account',
                               style: GoogleFonts.robotoMono(
@@ -621,7 +555,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: Row(
                           children: [
                             Icon(Icons.update, color: Colors.pinkAccent),
-                            SizedBox(width: 8), // Espacio entre el icono y el texto
+                            SizedBox(
+                                width: 8), // Espacio entre el icono y el texto
                             Text(
                               'App Updates',
                               style: GoogleFonts.robotoMono(
@@ -664,7 +599,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               height: 100,
                               color: Colors.transparent,
                               child: Center(
-                                child: Image.asset('assets/images/Riot_Games_logo_icon.webp'),
+                                child: Image.asset(
+                                    'assets/images/Riot_Games_logo_icon.webp'),
                               ),
                             ),
                           ),

@@ -12,88 +12,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  void _onNavBarVisibilityChanged(bool isHidden) {
-    setState(() {});
-    StatusBarControl.setHidden(isHidden);
-  }
 
   @override
   Widget build(BuildContext context) {
-    final statusBarHeight = MediaQuery.of(context).padding.top;
 
-    return Scaffold(
+    return const Scaffold(
         resizeToAvoidBottomInset: true,
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(top: statusBarHeight),
-                child: BarHome(
-                  onNavBarVisibilityChanged: _onNavBarVisibilityChanged,
-                ),
-              ),
-              const Divider(
-                color: Colors.black,
-                thickness: 2,
-              ),
-              const MyHome(),
-            ],
-          ),
+            child: MyHome()
         )
-        // Mueve el floatingActionButton
         );
-  }
-}
-
-class BarHome extends StatelessWidget {
-  final Function(bool) onNavBarVisibilityChanged;
-
-  const BarHome({Key? key, required this.onNavBarVisibilityChanged})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Flexible(
-          fit: FlexFit.loose,
-          child: Padding(
-            padding:
-                const EdgeInsets.only(left: 12, top: 2, right: 10, bottom: 0),
-            child: Align(
-              alignment: Alignment.center,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      'GameMentor',
-                      style: GoogleFonts.robotoMono(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 18,
-                      ),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.home), // Primer ícono a la derecha
-                    onPressed: () {
-                      // Lógica cuando se presiona el primer ícono
-                    },
-                  ),
-                  IconButton(
-                    icon: const Icon(
-                        Icons.notifications), // Segundo ícono a la derecha
-                    onPressed: () {
-                      // Lógica cuando se presiona el segundo ícono
-                    },
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+    }
 }
 
 class MyHome extends StatefulWidget {

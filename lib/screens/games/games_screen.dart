@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:game_mentor/domain/models/game/game.dart';
 import 'package:game_mentor/services/game_service.dart';
-import 'package:game_mentor/widgets/game/game_item.dart';
+import 'package:game_mentor/widgets/games/game_item.dart';
 
 class GamesScreen extends StatelessWidget {
   static const String name = 'games_screen';
@@ -9,7 +9,13 @@ class GamesScreen extends StatelessWidget {
   Future<List<Game>> fetchGames() async {
     try {
       final response = await GameService.getMany();
-      return response.data.map<Game>((e) => Game.fromJson(e)).toList();
+      List<Game> games = [];
+      if (response.statusCode == 200) {
+        for (var game in response.data!) {
+          games.add(Game.fromJson(game));
+        }
+      }
+      return games;
     } catch (e) {
       return [];
     }
@@ -25,7 +31,6 @@ class GamesScreen extends StatelessWidget {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<Game> games = snapshot.data!;
-
                 return GridView.builder(
                   itemCount: snapshot.data!.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

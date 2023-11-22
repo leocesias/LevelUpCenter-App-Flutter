@@ -31,7 +31,7 @@ class GamesDetailsScreen extends StatelessWidget {
                 children: [
                   Container(
                     margin: const EdgeInsets.only(right: 10),
-                    child: Image.network(game.logoUrl, width: 50, height: 50),
+                    child: Image.network(game.iconUrl, width: 50, height: 50),
                   ),
                   Text(
                     game.name,
