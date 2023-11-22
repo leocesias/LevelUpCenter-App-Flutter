@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:game_mentor/screens/navbar/navbarsCombinedScreen.dart';
 import 'package:game_mentor/services/auth_service.dart';
 import 'package:game_mentor/widgets/login/text_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../navbar/navbarsCombinedScreen.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -26,16 +25,15 @@ class _LoginPageState extends State<LoginPage> {
       );
       final Map<String, dynamic> responseData = response.data;
 
-      print(responseData['token']);
-
       if (responseData.containsKey('token')) {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
         await prefs.setString('token', responseData['token']);
+      }
 
-        LoginPage.navigatorKey.currentState!
-            .pushReplacement(MaterialPageRoute(builder: (ctx) {
-          return const NavbarCombinedScreen();
-        }));
+      if (mounted) {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const NavbarCombinedScreen()),
+        );
       }
     } catch (ex) {
       print(ex);
