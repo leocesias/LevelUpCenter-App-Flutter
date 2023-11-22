@@ -22,7 +22,7 @@ class _ProfileConfigState extends State<ProfileConfig> {
     }
   }
 
-  Future<Map<String, dynamic>> fetchProfile() async {
+  Future<Map<String, dynamic>?> fetchProfile() async {
     final response = await AuthService.getProfile();
     return response.data;
   }

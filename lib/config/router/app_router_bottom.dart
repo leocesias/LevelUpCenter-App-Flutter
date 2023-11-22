@@ -12,10 +12,10 @@ class AppRouterBottom extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> myList = [
       const HomeScreen(),
-      const CoachesScreen(),
+      //const CoachesScreen(),
       const AllCoaches(),
-      const InfoCoach(),
-      const ReserveCoach(),
+      //const InfoCoach(),
+      //const ReserveCoach(),
       const GamesScreen(),
       const ActivitiesScreen(),
       const ProfileConfig(),

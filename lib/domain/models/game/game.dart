@@ -9,8 +9,9 @@ class Game with _$Game {
     required int id,
     required String name,
     required String description,
-    required String logoUrl,
+    required String iconUrl,
     required String splashUrl,
+    required String bannerUrl,
     required int releaseYear,
     required double rating,
   }) = _Game;

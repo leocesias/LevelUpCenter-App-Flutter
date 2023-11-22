@@ -23,8 +23,9 @@ mixin _$Game {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get logoUrl => throw _privateConstructorUsedError;
+  String get iconUrl => throw _privateConstructorUsedError;
   String get splashUrl => throw _privateConstructorUsedError;
+  String get bannerUrl => throw _privateConstructorUsedError;
   int get releaseYear => throw _privateConstructorUsedError;
   double get rating => throw _privateConstructorUsedError;
 
@@ -42,8 +43,9 @@ abstract class $GameCopyWith<$Res> {
       {int id,
       String name,
       String description,
-      String logoUrl,
+      String iconUrl,
       String splashUrl,
+      String bannerUrl,
       int releaseYear,
       double rating});
 }
@@ -64,8 +66,9 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
     Object? id = null,
     Object? name = null,
     Object? description = null,
-    Object? logoUrl = null,
+    Object? iconUrl = null,
     Object? splashUrl = null,
+    Object? bannerUrl = null,
     Object? releaseYear = null,
     Object? rating = null,
   }) {
@@ -82,13 +85,17 @@ class _$GameCopyWithImpl<$Res, $Val extends Game>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      logoUrl: null == logoUrl
-          ? _value.logoUrl
-          : logoUrl // ignore: cast_nullable_to_non_nullable
+      iconUrl: null == iconUrl
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
               as String,
       splashUrl: null == splashUrl
           ? _value.splashUrl
           : splashUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      bannerUrl: null == bannerUrl
+          ? _value.bannerUrl
+          : bannerUrl // ignore: cast_nullable_to_non_nullable
               as String,
       releaseYear: null == releaseYear
           ? _value.releaseYear
@@ -113,8 +120,9 @@ abstract class _$$GameImplCopyWith<$Res> implements $GameCopyWith<$Res> {
       {int id,
       String name,
       String description,
-      String logoUrl,
+      String iconUrl,
       String splashUrl,
+      String bannerUrl,
       int releaseYear,
       double rating});
 }
@@ -132,8 +140,9 @@ class __$$GameImplCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? description = null,
-    Object? logoUrl = null,
+    Object? iconUrl = null,
     Object? splashUrl = null,
+    Object? bannerUrl = null,
     Object? releaseYear = null,
     Object? rating = null,
   }) {
@@ -150,13 +159,17 @@ class __$$GameImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      logoUrl: null == logoUrl
-          ? _value.logoUrl
-          : logoUrl // ignore: cast_nullable_to_non_nullable
+      iconUrl: null == iconUrl
+          ? _value.iconUrl
+          : iconUrl // ignore: cast_nullable_to_non_nullable
               as String,
       splashUrl: null == splashUrl
           ? _value.splashUrl
           : splashUrl // ignore: cast_nullable_to_non_nullable
+              as String,
+      bannerUrl: null == bannerUrl
+          ? _value.bannerUrl
+          : bannerUrl // ignore: cast_nullable_to_non_nullable
               as String,
       releaseYear: null == releaseYear
           ? _value.releaseYear
@@ -177,8 +190,9 @@ class _$GameImpl implements _Game {
       {required this.id,
       required this.name,
       required this.description,
-      required this.logoUrl,
+      required this.iconUrl,
       required this.splashUrl,
+      required this.bannerUrl,
       required this.releaseYear,
       required this.rating});
 
@@ -192,9 +206,11 @@ class _$GameImpl implements _Game {
   @override
   final String description;
   @override
-  final String logoUrl;
+  final String iconUrl;
   @override
   final String splashUrl;
+  @override
+  final String bannerUrl;
   @override
   final int releaseYear;
   @override
@@ -202,7 +218,7 @@ class _$GameImpl implements _Game {
 
   @override
   String toString() {
-    return 'Game(id: $id, name: $name, description: $description, logoUrl: $logoUrl, splashUrl: $splashUrl, releaseYear: $releaseYear, rating: $rating)';
+    return 'Game(id: $id, name: $name, description: $description, iconUrl: $iconUrl, splashUrl: $splashUrl, bannerUrl: $bannerUrl, releaseYear: $releaseYear, rating: $rating)';
   }
 
   @override
@@ -214,9 +230,11 @@ class _$GameImpl implements _Game {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
-            (identical(other.logoUrl, logoUrl) || other.logoUrl == logoUrl) &&
+            (identical(other.iconUrl, iconUrl) || other.iconUrl == iconUrl) &&
             (identical(other.splashUrl, splashUrl) ||
                 other.splashUrl == splashUrl) &&
+            (identical(other.bannerUrl, bannerUrl) ||
+                other.bannerUrl == bannerUrl) &&
             (identical(other.releaseYear, releaseYear) ||
                 other.releaseYear == releaseYear) &&
             (identical(other.rating, rating) || other.rating == rating));
@@ -224,8 +242,8 @@ class _$GameImpl implements _Game {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, description, logoUrl,
-      splashUrl, releaseYear, rating);
+  int get hashCode => Object.hash(runtimeType, id, name, description, iconUrl,
+      splashUrl, bannerUrl, releaseYear, rating);
 
   @JsonKey(ignore: true)
   @override
@@ -246,8 +264,9 @@ abstract class _Game implements Game {
       {required final int id,
       required final String name,
       required final String description,
-      required final String logoUrl,
+      required final String iconUrl,
       required final String splashUrl,
+      required final String bannerUrl,
       required final int releaseYear,
       required final double rating}) = _$GameImpl;
 
@@ -260,9 +279,11 @@ abstract class _Game implements Game {
   @override
   String get description;
   @override
-  String get logoUrl;
+  String get iconUrl;
   @override
   String get splashUrl;
+  @override
+  String get bannerUrl;
   @override
   int get releaseYear;
   @override
