@@ -3,6 +3,10 @@ import 'package:game_mentor/screens/navbar/navbarsCombinedScreen.dart';
 import 'package:game_mentor/services/auth_service.dart';
 import 'package:game_mentor/widgets/login/text_input.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:game_mentor/screens/login/register_screen.dart';
+import 'package:game_mentor/config/theme/app_colors.dart';
+import '../navbar/navbarsCombinedScreen.dart';
+
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -98,7 +102,24 @@ class _LoginPageState extends State<LoginPage> {
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                             )))),
-              )
+              ),
+              const SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                  );
+                },
+                child: Text(
+                  'REGISTER',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ],
           ),
         )));
